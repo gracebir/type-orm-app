@@ -1,22 +1,23 @@
 import { Field, Int, ObjectType } from "type-graphql";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @ObjectType()
 @Entity()
-export class Product{
+export class Product extends BaseEntity{
 
+    @Field()
     @PrimaryGeneratedColumn()
     id:number;
 
-    @Column()
     @Field()
+    @Column()
     name: string;
 
-    @Column()
     @Field(()=> Int)
+    @Column("int")
     quantity: number;
 
-    @Column()
     @Field(()=> Int)
+    @Column("int")
     price: number;
 }
